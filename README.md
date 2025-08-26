@@ -1,14 +1,14 @@
 # Job Application Tracker — n8n + AI (Personal Learning Repo)
 
-> **This is a highly customized, personal learning project.** It automates parts of *my* job application process using n8n and AI agents. It probably won’t be plug‑and‑play for anyone else — and that’s okay: this repo mainly documents what I tried, what worked, and what I learned.
-
+> **This project is a personal learning experiment where I use n8n and AI agents to automate tracking my job applications.** The main goal is to reduce the manual effort of updating a job application tracker — so I can focus entirely on applying, while the system keeps the table up to date.   
+>
+> It’s highly customized to my own process, Excel schema, and email setup. It isn’t meant to be a generic template, but rather a record of how I explored combining automation and AI in a real, practical workflow.
 ---
 
 ## What’s inside
 
-- `workflow/job-application-tracker.n8n.json` — the n8n workflow export you can import.
-- `assets/job-application-tracker-workflow.png` — full visual of the workflow graph (high level).
-- `assets/excel-applications.png` — a snapshot of the Excel tracking table the flow updates.
+- `job-application-tracker.n8n.json` — the n8n workflow export you can import.
+
 
 ### Workflow at a glance
 ![Example Image](Job_application_tracker_workflow.png)
@@ -18,13 +18,17 @@
 
 ## How it works (very briefly)
 
-- **Email intake (Outlook):** Pulls emails from *Junk* and looks for good/bad signals.
-- **Parsing with AI:** Uses OpenAI chat models to extract `{ jobTitle, company, status }` from message subject/body.
-- **Excel sync (Microsoft 365):** Matches to an existing row (using fuzzy match via AI), then updates the row’s `Status` or appends a new one when it’s a fresh confirmation.
-- **Rate limiting:** Processes results in small batches with waits to be gentle on APIs.
-- **Memory:** Simple conversational memory nodes were used during development to coordinate tool calls.
+This solution has two main flows that work together to keep my tracker current:
 
-The exact node configuration, prompts, and Excel workbook IDs are all tailored to my environment.
+Tracking progress and rejections
+-Periodically scans emails (including Junk) for updates from companies and recruiters.
+-AI parses the messages into structured outcomes, like Status = Rejected or Interview Scheduled.
+-The system then updates the matching row in Excel so I always see the latest stage of each application.
+
+Capturing job confirmations
+-Periodically checks the inbox for confirmation emails (e.g. “We received your application”).
+-AI extracts the company and job title, then matches it to an existing row or creates a new one if it’s a fresh application.
+-This removes the need for me to manually input every application into the tracker.
 
 ---
 
@@ -45,38 +49,5 @@ The exact node configuration, prompts, and Excel workbook IDs are all tailored t
 ## Why this repo exists
 
 I’m using AI agents to **augment** a real process (job applications) and I want a written, reproducible record of what I tried. The point is learning, not shipping a generic product.
-
----
-
-## Files & structure
-
-```
-.
-├── assets/
-│   ├── job-application-tracker-workflow.png
-│   └── excel-applications.png
-├── workflow/
-│   └── job-application-tracker.n8n.json
-└── README.md
-```
-
----
-
-## Safety & secrets
-
-- The export includes **resource IDs** from my environment. Replace these with yours.
-- Keep API keys in n8n credentials, not hard‑coded in nodes / code.
-- Be mindful of PII in emails — mask what you store if needed.
-
----
-
-## Ideas to iterate later
-
-- Swap to queue-based processing for higher volume.
-- Add a “human-in-the-loop” review step before Excel writes.
-- Log decisions (and AI outputs) to a separate sheet for auditing.
-- Export analytics to a dashboard (e.g., Supabase + Metabase).
-
----
 
 © 2025 — Personal learning project.
