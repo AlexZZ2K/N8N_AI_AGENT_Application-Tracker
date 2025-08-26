@@ -11,11 +11,9 @@
 - `assets/excel-applications.png` — a snapshot of the Excel tracking table the flow updates.
 
 ### Workflow at a glance
-![Workflow overview](job_application_tracker_workflow.png)
-
+![Example Image](job_application_tracker_workflow.png)
 ### Excel table the flow updates
-![Excel applications snapshot](excel_applications.png)
-
+![Example Image](excel_applications.png)
 ---
 
 ## How it works (very briefly)
