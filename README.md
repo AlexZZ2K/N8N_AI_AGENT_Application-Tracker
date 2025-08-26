@@ -33,6 +33,7 @@ Capturing job confirmations
 ---
 
 ## Importing the workflow (n8n)
+> You have to set up your own credentials & API keys for it to work!
 
 1. Open n8n → **Workflows** → **Import from File**.
 2. Choose `workflow/job-application-tracker.n8n.json`.
@@ -45,9 +46,3 @@ Capturing job confirmations
 > Note: If you don’t use the same Excel schema, update the *Set* nodes and the *Update/Append* mappings accordingly.
 
 ---
-
-## Why this repo exists
-
-I’m using AI agents to **augment** a real process (job applications) and I want a written, reproducible record of what I tried. The point is learning, not shipping a generic product.
-
-© 2025 — Personal learning project.
