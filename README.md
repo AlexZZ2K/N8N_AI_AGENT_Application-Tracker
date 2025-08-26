@@ -1,6 +1,6 @@
 # Job Application Tracker — n8n + AI (Personal Learning Repo)
 
-> ⚠️ **This is a highly customized, personal learning project.** It automates parts of *my* job application process using n8n and AI agents. It probably won’t be plug‑and‑play for anyone else — and that’s okay: this repo mainly documents what I tried, what worked, and what I learned.
+> **This is a highly customized, personal learning project.** It automates parts of *my* job application process using n8n and AI agents. It probably won’t be plug‑and‑play for anyone else — and that’s okay: this repo mainly documents what I tried, what worked, and what I learned.
 
 ---
 
